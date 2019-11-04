@@ -23,7 +23,18 @@ public class CheckliteSolution {
 
         Map<Character, Integer> occurrencesPerSKU = new HashMap<>();
 
-        Stream.of(allSKUs).collect(Collectors.toMap())
+        for (char sku : allSKUs) {
+            if(occurrencesPerSKU.containsKey(sku)) {
+                occurrencesPerSKU.put(sku, occurrencesPerSKU.get(sku) + 1);
+            } else {
+                occurrencesPerSKU.put(sku, 1);
+            }
+        }
+
+        for (char sku : allSKUs) {
+            int numberOfItems = occurrencesPerSKU.get(sku);
+            
+        }
 
         int result = 0;
         for (char sku : allSKUs) {
@@ -70,3 +81,4 @@ public class CheckliteSolution {
         return skus != null && ALLOWED_SKU.matcher(skus).matches();
     }
 }
+
