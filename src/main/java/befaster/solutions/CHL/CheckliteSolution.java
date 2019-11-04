@@ -10,7 +10,7 @@ public class CheckliteSolution {
     public Integer checklite(String skus) {
         //todo validateInput(skus);
         char[] allSKUs = skus.toCharArray();
-        return pricesPerSKU.get(allSKUs[0])  + pricesPerSKU.get(allSKUs[1]);
+        return pricesPerSKU.get(allSKUs[0]) + pricesPerSKU.get(allSKUs[1]);
     }
 
     /*
@@ -32,5 +32,3 @@ public class CheckliteSolution {
         return prices;
     }
 }
-
-

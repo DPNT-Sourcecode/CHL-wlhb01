@@ -7,4 +7,3 @@ public class HelloSolution {
         return format("Hello, %s!", friendName);
     }
 }
-
