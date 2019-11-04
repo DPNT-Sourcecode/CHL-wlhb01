@@ -3,12 +3,13 @@ package befaster.solutions.CHL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 public class CheckliteSolution {
 
     private static final Map<Character, Integer> PRICES_PER_SKU = loadPrices();
     private static final Map<Character, Integer> BUNDLE_FOR_SKU = loadBundles();
-    private static final Map<Character, Integer> PRICES_PER_BUNDLE = loadPricesPerBundle();
+    private static final Map<String, Integer> PRICES_PER_BUNDLE = loadPricesPerBundle();
 
     private static final Pattern ALLOWED_SKU = Pattern.compile("[ABCD]+");
 
@@ -18,6 +19,10 @@ public class CheckliteSolution {
         }
 
         char[] allSKUs = skus.toCharArray();
+
+        Map<Character, Integer> occurrencesPerSKU = new HashMap<>();
+
+        Stream.of(allSKUs).collect(new Hashz)
 
         int result = 0;
         for (char sku : allSKUs) {
@@ -53,10 +58,18 @@ public class CheckliteSolution {
         return bundles;
     }
 
+    private static Map<String, Integer> loadPricesPerBundle() {
+        Map<String, Integer> pricesPerBundle = new HashMap<>();
+        pricesPerBundle.put("3A", 130);
+        pricesPerBundle.put("2B", 45);
+        return pricesPerBundle;
+    }
+
     private boolean isValidInput(String skus) {
         return skus != null && ALLOWED_SKU.matcher(skus).matches();
     }
 }
+
 
 
 
