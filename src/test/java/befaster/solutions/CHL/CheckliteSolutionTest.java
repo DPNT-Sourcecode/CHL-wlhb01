@@ -17,4 +17,13 @@ public class CheckliteSolutionTest {
 
         assertThat(totalValue, equalTo(50));
     }
+
+    @Test
+    public void checklite_processTwoItem() {
+        String skus = "AB";
+
+        int totalValue = solution.checklite(skus);
+
+        assertThat(totalValue, equalTo(80));
+    }
 }

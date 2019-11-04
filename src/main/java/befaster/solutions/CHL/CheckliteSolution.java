@@ -8,7 +8,9 @@ public class CheckliteSolution {
     private final static Map<String, Integer> pricesPerSKU = loadPrices();
 
     public Integer checklite(String skus) {
-        return pricesPerSKU.get(skus);
+        //todo validateInput(skus);
+        String[] allSKUs = skus.split("");
+        return pricesPerSKU.get(allSKUs[0] + allSKUs[1]);
     }
 
     /*
