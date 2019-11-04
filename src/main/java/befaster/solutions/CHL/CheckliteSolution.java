@@ -5,12 +5,12 @@ import java.util.Map;
 
 public class CheckliteSolution {
 
-    private final static Map<String, Integer> pricesPerSKU = loadPrices();
+    private final static Map<Character, Integer> pricesPerSKU = loadPrices();
 
     public Integer checklite(String skus) {
         //todo validateInput(skus);
-        String[] allSKUs = skus.split("");
-        return pricesPerSKU.get(allSKUs[0] + allSKUs[1]);
+        char[] allSKUs = skus.toCharArray();
+        return pricesPerSKU.get(allSKUs[0])  + pricesPerSKU.get(allSKUs[1]);
     }
 
     /*
@@ -23,13 +23,14 @@ public class CheckliteSolution {
     | D    | 15    |                |
     +------+-------+----------------+
     */
-    private static Map<String, Integer> loadPrices() {
-        Map<String, Integer> prices = new HashMap<>();
-        prices.put("A", 50);
-        prices.put("B", 30);
-        prices.put("C", 20);
-        prices.put("D", 15);
+    private static Map<Character, Integer> loadPrices() {
+        Map<Character, Integer> prices = new HashMap<>();
+        prices.put('A', 50);
+        prices.put('B', 30);
+        prices.put('C', 20);
+        prices.put('D', 15);
         return prices;
     }
 }
+
 

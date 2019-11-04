@@ -19,7 +19,7 @@ public class CheckliteSolutionTest {
     }
 
     @Test
-    public void checklite_processTwoItem() {
+    public void checklite_processTwoItems() {
         String skus = "AB";
 
         int totalValue = solution.checklite(skus);
