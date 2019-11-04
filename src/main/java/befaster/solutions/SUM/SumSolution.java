@@ -14,4 +14,3 @@ public class SumSolution {
         return input >= 0 && input <= 100;
     }
 }
-
