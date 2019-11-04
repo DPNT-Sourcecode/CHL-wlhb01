@@ -35,8 +35,8 @@ public class CheckliteSolution {
         for (Map.Entry<Character, Integer> skuEntry : occurrencesPerSKU.entrySet()) {
             int numberOfItems = skuEntry.getValue();
             if(BUNDLE_FOR_SKU.containsKey(skuEntry.getKey()) &&
-                    PRICES_PER_BUNDLE.containsKey(BUNDLE_FOR_SKU.get(skuEntry.getKey()) + "" + skuEntry.getKey())) {
-                int pricePerBundle = PRICES_PER_BUNDLE.get(BUNDLE_FOR_SKU.get(skuEntry.getKey()) + "" + skuEntry.getKey());
+                    PRICES_PER_BUNDLE.containsKey(getBundlePriceKey(skuEntry))) {
+                int pricePerBundle = PRICES_PER_BUNDLE.get(getBundlePriceKey(skuEntry));
                 while (numberOfItems > 0 && numberOfItems % BUNDLE_FOR_SKU.get(skuEntry.getKey()) == 0) {
                     result += pricePerBundle;
                     numberOfItems -= BUNDLE_FOR_SKU.get(skuEntry.getKey());
@@ -49,7 +49,6 @@ public class CheckliteSolution {
         return result;
     }
 
-
     /*
      +------+-------+----------------+
     | Item | Price | Special offers |
@@ -60,6 +59,7 @@ public class CheckliteSolution {
     | D    | 15    |                |
     +------+-------+----------------+
     */
+
     private static Map<Character, Integer> loadPrices() {
         Map<Character, Integer> prices = new HashMap<>();
         prices.put('A', 50);
@@ -68,7 +68,6 @@ public class CheckliteSolution {
         prices.put('D', 15);
         return prices;
     }
-
     private static Map<Character, Integer> loadBundles() {
         Map<Character, Integer> bundles = new HashMap<>();
         bundles.put('A', 3);
@@ -86,7 +85,12 @@ public class CheckliteSolution {
     private boolean isValidInput(String skus) {
         return skus != null && ALLOWED_SKU.matcher(skus).matches();
     }
+
+    private String getBundlePriceKey(Map.Entry<Character, Integer> skuEntry) {
+        return BUNDLE_FOR_SKU.get(skuEntry.getKey()) + "" + skuEntry.getKey();
+    }
 }
+
 
 
 
