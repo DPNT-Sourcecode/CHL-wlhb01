@@ -1,11 +1,14 @@
 package befaster.solutions.HLO;
 
+import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.*;
 
+@RunWith(JUnitParamsRunner.class)
 public class HelloSolutionTest {
 
     private HelloSolution solution = new HelloSolution();
