@@ -33,6 +33,10 @@ public class CheckliteSolution {
 
         for (char sku : allSKUs) {
             int numberOfItems = occurrencesPerSKU.get(sku);
+            int pricePerBundle = 0;
+            if(BUNDLE_FOR_SKU.containsKey(sku)) {
+                pricePerBundle = PRICES_PER_BUNDLE.get(BUNDLE_FOR_SKU.get(sku) + "" + sku);
+            }
             
         }
 
@@ -81,4 +85,5 @@ public class CheckliteSolution {
         return skus != null && ALLOWED_SKU.matcher(skus).matches();
     }
 }
+
 
