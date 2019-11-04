@@ -1,8 +1,10 @@
 package befaster.solutions.CHL;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CheckliteSolution {
@@ -17,6 +19,9 @@ public class CheckliteSolution {
         }
 
         char[] allSKUs = skus.toCharArray();
+
+        List<Integer> prices = Stream.of(allSKUs)
+                .map(sku -> PRICES_PER_SKU.get(sku)).collect(Collectors.toList());
         return Stream.of(allSKUs)
                 .mapToInt(sku -> PRICES_PER_SKU.get(sku))
                 .sum();
@@ -46,6 +51,7 @@ public class CheckliteSolution {
         return skus != null && ALLOWED_SKU.matcher(skus).matches();
     }
 }
+
 
 
 
