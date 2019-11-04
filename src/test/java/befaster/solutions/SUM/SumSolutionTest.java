@@ -19,4 +19,11 @@ public class SumSolutionTest {
     public void compute_sum() {
         assertThat(sum.compute(1, 1), equalTo(2));
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void compute_argumentOutOfLimitsShouldThrowAnIllegalArgumentException() {
+        sum.compute(-1, 2);
+    }
+
 }
+
