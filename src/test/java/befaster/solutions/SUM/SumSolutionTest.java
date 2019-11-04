@@ -2,10 +2,13 @@ package befaster.solutions.SUM;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
+@RunWith(Parameterized.class)
 public class SumSolutionTest {
     private SumSolution sum;
 
@@ -21,9 +24,13 @@ public class SumSolutionTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
+
     public void compute_argumentOutOfLimitsShouldThrowAnIllegalArgumentException() {
         sum.compute(-1, 2);
     }
 
+    private Iterable<Object[]> 
+
 }
+
 
