@@ -17,7 +17,9 @@ public class CheckliteSolution {
         }
 
         char[] allSKUs = skus.toCharArray();
-        return Stream.of(allSKUs).mapToInt(sku -> PRICES_PER_SKU.get(sku)).sum();
+        return Stream.of(allSKUs)
+                .mapToInt(sku -> PRICES_PER_SKU.get(sku))
+                .sum();
     }
 
     /*
@@ -44,6 +46,7 @@ public class CheckliteSolution {
         return skus != null && ALLOWED_SKU.matcher(skus).matches();
     }
 }
+
 
 
 
