@@ -37,7 +37,7 @@ public class CheckliteSolution {
             if(BUNDLE_FOR_SKU.containsKey(skuEntry.getKey()) &&
                     PRICES_PER_BUNDLE.containsKey(getBundlePriceKey(skuEntry))) {
                 int pricePerBundle = PRICES_PER_BUNDLE.get(getBundlePriceKey(skuEntry));
-                while (numberOfItems > 0 && numberOfItems % BUNDLE_FOR_SKU.get(skuEntry.getKey()) >= 1) {
+                while (numberOfItems >= BUNDLE_FOR_SKU.get(skuEntry.getKey())) {
                     result += pricePerBundle;
                     numberOfItems -= BUNDLE_FOR_SKU.get(skuEntry.getKey());
                 }
@@ -90,3 +90,4 @@ public class CheckliteSolution {
         return BUNDLE_FOR_SKU.get(skuEntry.getKey()) + "" + skuEntry.getKey();
     }
 }
+
