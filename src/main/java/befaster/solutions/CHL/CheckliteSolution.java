@@ -12,7 +12,7 @@ public class CheckliteSolution {
     private static final Map<Character, Integer> BUNDLE_FOR_SKU = loadBundles();
     private static final Map<String, Integer> PRICES_PER_BUNDLE = loadPricesPerBundle();
 
-    private static final Pattern ALLOWED_SKU = Pattern.compile("[ABCD]+");
+    private static final Pattern ALLOWED_SKU = Pattern.compile("[ABCD\\s]+");
 
     public Integer checklite(String skus) {
         if (!isValidInput(skus)) {
@@ -90,4 +90,5 @@ public class CheckliteSolution {
         return BUNDLE_FOR_SKU.get(skuEntry.getKey()) + "" + skuEntry.getKey();
     }
 }
+
 
