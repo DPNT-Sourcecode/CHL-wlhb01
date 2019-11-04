@@ -2,13 +2,14 @@ package befaster.solutions.CHL;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class CheckliteSolution {
 
     private final static Map<Character, Integer> pricesPerSKU = loadPrices();
 
     public Integer checklite(String skus) {
-        //todo validateInput(skus);
+        validateInput(skus);
         char[] allSKUs = skus.toCharArray();
         return pricesPerSKU.get(allSKUs[0]) + pricesPerSKU.get(allSKUs[1]);
     }
@@ -23,6 +24,7 @@ public class CheckliteSolution {
     | D    | 15    |                |
     +------+-------+----------------+
     */
+
     private static Map<Character, Integer> loadPrices() {
         Map<Character, Integer> prices = new HashMap<>();
         prices.put('A', 50);
@@ -30,5 +32,9 @@ public class CheckliteSolution {
         prices.put('C', 20);
         prices.put('D', 15);
         return prices;
+    }
+
+    private boolean validateInput(String skus) {
+        return Pattern.compile("[ABCD]]").matcher(skus).matches();
     }
 }
