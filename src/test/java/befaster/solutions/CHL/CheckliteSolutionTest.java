@@ -32,9 +32,21 @@ public class CheckliteSolutionTest {
     }
 
     @Test
+    @Parameters(method = "dataFor_checklite_processItems")
+    public void checklite_processItems(String input, int result) {
+        assertThat(solution.checklite(input), equalTo(result));
+    }
+
+    @Test
     @Parameters(method = "dataFor_checklite_shouldDealWithWrongInput")
     public void checklite_shouldDealWithWrongInput(String input) {
         assertThat(solution.checklite(input), equalTo(-1));
+    }
+
+    private Object[] dataFor_checklite_processItems() {
+        return new Object[]{
+                new Object[]{"AAA", 130}
+        };
     }
 
     private Object[] dataFor_checklite_shouldDealWithWrongInput() {

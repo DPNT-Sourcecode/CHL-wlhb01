@@ -34,7 +34,8 @@ public class CheckliteSolution {
         int result = 0;
         for (char sku : allSKUs) {
             int numberOfItems = occurrencesPerSKU.get(sku);
-            if(BUNDLE_FOR_SKU.containsKey(sku)) {
+            if(BUNDLE_FOR_SKU.containsKey(sku) &&
+                    PRICES_PER_BUNDLE.containsKey(BUNDLE_FOR_SKU.get(sku) + "" + sku)) {
                 int pricePerBundle = PRICES_PER_BUNDLE.get(BUNDLE_FOR_SKU.get(sku) + "" + sku);
                 while (numberOfItems % BUNDLE_FOR_SKU.get(sku) == 0) {
                     result += pricePerBundle;
@@ -85,6 +86,7 @@ public class CheckliteSolution {
         return skus != null && ALLOWED_SKU.matcher(skus).matches();
     }
 }
+
 
 
 
