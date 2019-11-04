@@ -20,8 +20,9 @@ public class SumSolutionTest {
     }
 
     @Test
-    public void compute_sum() {
-        assertThat(sum.compute(1, 1), equalTo(2));
+    @Parameters(method = "dataFor_compute_sum")
+    public void compute_sum(int x, int y, int result) {
+        assertThat(sum.compute(x, y), equalTo(result));
     }
 
 
@@ -29,6 +30,14 @@ public class SumSolutionTest {
     @Parameters(method = "dataFor_compute_argumentOutOfLimitsShouldThrowAnIllegalArgumentException")
     public void compute_argumentOutOfLimitsShouldThrowAnIllegalArgumentException(int x, int y) {
         sum.compute(x, y);
+    }
+
+    private Object[] dataFor_compute_sum() {
+        return new Object[]{
+                new Object[]{1, 1, 2},
+                new Object[]{50, 0, 50},
+                new Object[]{0, 50, 50}
+        };
     }
 
     private Object[] dataFor_compute_argumentOutOfLimitsShouldThrowAnIllegalArgumentException() {
@@ -43,4 +52,5 @@ public class SumSolutionTest {
     }
 
 }
+
 
