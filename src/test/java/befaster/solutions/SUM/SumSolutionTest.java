@@ -23,14 +23,17 @@ public class SumSolutionTest {
         assertThat(sum.compute(1, 1), equalTo(2));
     }
 
-    @Test(expected = IllegalArgumentException.class)
 
+    @Test(expected = IllegalArgumentException.class)
+    @Parameterized.Parameters(method = "")
     public void compute_argumentOutOfLimitsShouldThrowAnIllegalArgumentException() {
         sum.compute(-1, 2);
     }
 
-    private Iterable<Object[]> 
+
+    private Iterable<Object[]>
 
 }
+
 
 
