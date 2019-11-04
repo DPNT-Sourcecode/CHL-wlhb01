@@ -6,7 +6,8 @@ import java.util.regex.Pattern;
 
 public class CheckliteSolution {
 
-    private static final Map<Character, Integer> pricesPerSKU = loadPrices();
+    private static final Map<Character, Integer> PRICES_PER_SKU = loadPrices();
+    private static final Map<Character, Integer> BUNDLE_FOR_SKU = new HashMap<>();
     private static final Pattern ALLOWED_SKU = Pattern.compile("[ABCD]+");
 
     public Integer checklite(String skus) {
@@ -15,7 +16,7 @@ public class CheckliteSolution {
         }
 
         char[] allSKUs = skus.toCharArray();
-        return pricesPerSKU.get(allSKUs[0]) + pricesPerSKU.get(allSKUs[1]);
+        return PRICES_PER_SKU.get(allSKUs[0]) + PRICES_PER_SKU.get(allSKUs[1]);
     }
 
     /*
@@ -42,4 +43,5 @@ public class CheckliteSolution {
         return skus != null && ALLOWED_SKU.matcher(skus).matches();
     }
 }
+
 
