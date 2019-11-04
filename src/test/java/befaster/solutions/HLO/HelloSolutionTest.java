@@ -1,5 +1,6 @@
 package befaster.solutions.HLO;
 
+import junitparams.Parameters;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -10,7 +11,15 @@ public class HelloSolutionTest {
     private HelloSolution solution = new HelloSolution();
 
     @Test
-    public void hello_shouldReturnHello() {
-        assertThat(solution.hello(""), equalTo("hello"));
+    @Parameters(method = "dataFor_hello_shouldReturnHello")
+    public void hello_shouldReturnHello(String name, String expectedOutput) {
+        assertThat(solution.hello(name), equalTo(expectedOutput));
+    }
+
+    private Object[] dataFor_hello_shouldReturnHello() {
+        return new Object[]{
+                new Object[]{"John", "Hello, John!"},
+                new Object[]{"Mary", "Hello, Mary!"}
+        };
     }
 }
