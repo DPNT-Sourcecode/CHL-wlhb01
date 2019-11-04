@@ -34,7 +34,3 @@ public class SumSolutionTest {
     private Iterable<Object[]> dataFor_compute_argumentOutOfLimitsShouldThrowAnIllegalArgumentException
 
 }
-
-
-
-
