@@ -6,10 +6,14 @@ import java.util.regex.Pattern;
 
 public class CheckliteSolution {
 
-    private final static Map<Character, Integer> pricesPerSKU = loadPrices();
+    private static final Map<Character, Integer> pricesPerSKU = loadPrices();
+    private static final Pattern ALLOWED_SKU = Pattern.compile("[ABCD]+");
 
     public Integer checklite(String skus) {
-        validateInput(skus);
+        if(!isValidInput(skus)) {
+            return -1;
+        }
+
         char[] allSKUs = skus.toCharArray();
         return pricesPerSKU.get(allSKUs[0]) + pricesPerSKU.get(allSKUs[1]);
     }
@@ -34,7 +38,8 @@ public class CheckliteSolution {
         return prices;
     }
 
-    private boolean validateInput(String skus) {
-        return Pattern.compile("[ABCD]]").matcher(skus).matches();
+    private boolean isValidInput(String skus) {
+        return skus != null && ALLOWED_SKU.matcher(skus).matches();
     }
 }
+
