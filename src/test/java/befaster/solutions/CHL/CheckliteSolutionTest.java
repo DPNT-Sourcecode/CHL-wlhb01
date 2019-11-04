@@ -40,8 +40,7 @@ public class CheckliteSolutionTest {
     @Test
     @Parameters(method = "dataFor_checklite_shouldDealWithWrongInput")
     public void checklite_shouldDealWithWrongInput(String input) {
-        //assertThat(solution.checklite(input), equalTo(-1));
-        System.out.println(0% 2);
+        assertThat(solution.checklite(input), equalTo(-1));
     }
 
     private Object[] dataFor_checklite_processItems() {
@@ -63,3 +62,4 @@ public class CheckliteSolutionTest {
         };
     }
 }
+
