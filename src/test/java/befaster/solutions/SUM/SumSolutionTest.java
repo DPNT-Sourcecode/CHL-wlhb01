@@ -27,10 +27,20 @@ public class SumSolutionTest {
 
     @Test(expected = IllegalArgumentException.class)
     @Parameters(method = "dataFor_compute_argumentOutOfLimitsShouldThrowAnIllegalArgumentException")
-    public void compute_argumentOutOfLimitsShouldThrowAnIllegalArgumentException() {
-        sum.compute(-1, 2);
+    public void compute_argumentOutOfLimitsShouldThrowAnIllegalArgumentException(int x, int y) {
+        sum.compute(x, y);
     }
 
-    private Iterable<Object[]> dataFor_compute_argumentOutOfLimitsShouldThrowAnIllegalArgumentException
+    private Object[] dataFor_compute_argumentOutOfLimitsShouldThrowAnIllegalArgumentException() {
+        return new Object[]{
+                new Object[]{-1, 1},
+                new Object[]{1, -1},
+                new Object[]{-1, -1},
+                new Object[]{101, 1},
+                new Object[]{1, 101},
+                new Object[]{101, 101}
+        };
+    }
 
 }
+
