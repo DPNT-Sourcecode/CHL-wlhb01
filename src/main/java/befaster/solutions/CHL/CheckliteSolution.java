@@ -3,6 +3,7 @@ package befaster.solutions.CHL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CheckliteSolution {
@@ -22,7 +23,7 @@ public class CheckliteSolution {
 
         Map<Character, Integer> occurrencesPerSKU = new HashMap<>();
 
-        Stream.of(allSKUs).collect(new Hashz)
+        Stream.of(allSKUs).collect(Collectors.toMap())
 
         int result = 0;
         for (char sku : allSKUs) {
@@ -69,11 +70,3 @@ public class CheckliteSolution {
         return skus != null && ALLOWED_SKU.matcher(skus).matches();
     }
 }
-
-
-
-
-
-
-
-
