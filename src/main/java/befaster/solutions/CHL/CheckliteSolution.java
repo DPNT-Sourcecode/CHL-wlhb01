@@ -37,13 +37,14 @@ public class CheckliteSolution {
             if(BUNDLE_FOR_SKU.containsKey(sku) &&
                     PRICES_PER_BUNDLE.containsKey(BUNDLE_FOR_SKU.get(sku) + "" + sku)) {
                 int pricePerBundle = PRICES_PER_BUNDLE.get(BUNDLE_FOR_SKU.get(sku) + "" + sku);
-                while (numberOfItems % BUNDLE_FOR_SKU.get(sku) == 0) {
+                while (numberOfItems > 0 && numberOfItems % BUNDLE_FOR_SKU.get(sku) == 0) {
                     result += pricePerBundle;
                     numberOfItems -= BUNDLE_FOR_SKU.get(sku);
                 }
             }
-            result += (numberOfItems * PRICES_PER_SKU.get(sku));
-
+            if(numberOfItems > 0) {
+                result += (numberOfItems * PRICES_PER_SKU.get(sku));
+            }
         }
         return result;
     }
@@ -86,6 +87,7 @@ public class CheckliteSolution {
         return skus != null && ALLOWED_SKU.matcher(skus).matches();
     }
 }
+
 
 
 
