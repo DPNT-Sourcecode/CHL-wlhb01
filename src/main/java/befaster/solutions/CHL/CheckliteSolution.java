@@ -2,12 +2,14 @@ package befaster.solutions.CHL;
 
 import com.google.common.collect.Lists;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static java.util.Collections.sort;
 
 public class CheckliteSolution {
 
@@ -41,6 +43,9 @@ public class CheckliteSolution {
                     PRICES_PER_BUNDLE.containsKey(getBundlePriceKey(skuEntry))) {
                 int pricePerBundle = PRICES_PER_BUNDLE.get(getBundlePriceKey(skuEntry));
                 List<Integer> bundlesForSKU = BUNDLE_FOR_SKU.get(skuEntry.getKey());
+                if(!bundlesForSKU.isEmpty()) {
+                    sort(bundlesForSKU, (a, b) -> b.compareTo(a));
+                }
                 while (numberOfItems >= BUNDLE_FOR_SKU.get(skuEntry.getKey())) {
                     result += pricePerBundle;
                     numberOfItems -= BUNDLE_FOR_SKU.get(skuEntry.getKey());
@@ -87,6 +92,7 @@ public class CheckliteSolution {
         return BUNDLE_FOR_SKU.get(skuEntry.getKey()) + "" + skuEntry.getKey();
     }
 }
+
 
 
 
