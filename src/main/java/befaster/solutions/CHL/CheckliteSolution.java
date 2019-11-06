@@ -37,13 +37,27 @@ public class CheckliteSolution {
         int result = 0;
         for (Map.Entry<Character, Integer> skuEntry : occurrencesPerSKU.entrySet()) {
             int numberOfItems = skuEntry.getValue();
+            List<Integer> bundlesForSKU = BUNDLE_FOR_SKU.get(skuEntry.getKey());
+            if(bundlesForSKU.isEmpty()) {
+               continue;
+            }
+            sort(bundlesForSKU, reverseOrder());
+            
+
+
             if(BUNDLE_FOR_SKU.containsKey(skuEntry.getKey()) &&
                     PRICES_PER_BUNDLE.containsKey(getBundlePriceKey(skuEntry))) {
                 int pricePerBundle = PRICES_PER_BUNDLE.get(getBundlePriceKey(skuEntry));
                 List<Integer> bundlesForSKU = BUNDLE_FOR_SKU.get(skuEntry.getKey());
                 if(!bundlesForSKU.isEmpty()) {
                     sort(bundlesForSKU, reverseOrder());
-                    
+                    Iterator<Integer> bundleIterator = bundlesForSKU.iterator();
+                    while (bundleIterator.hasNext()) {
+                        int currentBundle = bundleIterator.next();
+                        if(currentBundle >= numberOfItems) {
+
+                        }
+                    }
                 }
                 while (numberOfItems >= BUNDLE_FOR_SKU.get(skuEntry.getKey())) {
                     result += pricePerBundle;
@@ -91,6 +105,7 @@ public class CheckliteSolution {
         return BUNDLE_FOR_SKU.get(skuEntry.getKey()) + "" + skuEntry.getKey();
     }
 }
+
 
 
 
