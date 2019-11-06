@@ -46,6 +46,7 @@ public class CheckliteSolutionTest {
     private Object[] dataFor_checklite_processItems() {
         return new Object[]{
                 new Object[]{"", 0},
+                new Object[]{"DE", 55},
                 new Object[]{"AAA", 130},
                 new Object[]{"AAAA", 180},
                 new Object[]{"ABBAAB", 205},
