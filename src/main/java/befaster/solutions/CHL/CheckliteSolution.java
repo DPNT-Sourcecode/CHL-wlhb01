@@ -1,7 +1,5 @@
 package befaster.solutions.CHL;
 
-import com.google.common.collect.Lists;
-
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -81,7 +79,7 @@ public class CheckliteSolution {
         pricesPerBundle.put("3A", 130);
         pricesPerBundle.put("5A", 200);
         pricesPerBundle.put("2B", 45);
-        pricesPerBundle.put("3E", 80);
+        pricesPerBundle.put("2E", 80);
         return pricesPerBundle;
     }
 
@@ -93,4 +91,5 @@ public class CheckliteSolution {
         return BUNDLE_FOR_SKU.get(skuEntry.getKey()) + "" + skuEntry.getKey();
     }
 }
+
 
