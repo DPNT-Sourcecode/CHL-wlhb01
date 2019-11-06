@@ -56,7 +56,8 @@ public class CheckliteSolutionTest {
                 new Object[]{"ABBAAB", 205},
                 new Object[]{"ABCBCAAB", 245},
                 new Object[]{"ABCBCAAAB", 295},
-                new Object[]{"ABCBACAAABA", 375}
+                new Object[]{"ABCBACAAABA", 365},
+                new Object[]{"AAAAAAAAAAAAABBBBEEEEE", 780}
         };
     }
 
