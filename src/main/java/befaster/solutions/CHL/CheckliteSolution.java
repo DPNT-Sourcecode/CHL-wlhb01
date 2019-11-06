@@ -47,36 +47,30 @@ public class CheckliteSolution {
         return result;
     }
 
-    /*
-     +------+-------+----------------+
-    | Item | Price | Special offers |
-    +------+-------+----------------+
-    | A    | 50    | 3A for 130     |
-    | B    | 30    | 2B for 45      |
-    | C    | 20    |                |
-    | D    | 15    |                |
-    +------+-------+----------------+
-    */
-
     private static Map<Character, Integer> loadPrices() {
         Map<Character, Integer> prices = new HashMap<>();
         prices.put('A', 50);
         prices.put('B', 30);
         prices.put('C', 20);
         prices.put('D', 15);
+        prices.put('E', 40);
         return prices;
     }
     private static Map<Character, Integer> loadBundles() {
         Map<Character, Integer> bundles = new HashMap<>();
         bundles.put('A', 3);
+        bundles.put('A', 5);
         bundles.put('B', 2);
+        bundles.put('E', 3);
         return bundles;
     }
 
     private static Map<String, Integer> loadPricesPerBundle() {
         Map<String, Integer> pricesPerBundle = new HashMap<>();
         pricesPerBundle.put("3A", 130);
+        pricesPerBundle.put("5A", 200);
         pricesPerBundle.put("2B", 45);
+        pricesPerBundle.put("3E", 80);
         return pricesPerBundle;
     }
 
@@ -88,4 +82,5 @@ public class CheckliteSolution {
         return BUNDLE_FOR_SKU.get(skuEntry.getKey()) + "" + skuEntry.getKey();
     }
 }
+
 
