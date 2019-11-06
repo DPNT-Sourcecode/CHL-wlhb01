@@ -1,13 +1,18 @@
 package befaster.solutions.CHL;
 
+import com.google.common.collect.Lists;
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
+
+import static com.google.common.collect.Lists.newArrayList;
 
 public class CheckliteSolution {
 
     private static final Map<Character, Integer> PRICES_PER_SKU = loadPrices();
-    private static final Map<Character, Integer> BUNDLE_FOR_SKU = loadBundles();
+    private static final Map<Character, List<Integer>> BUNDLE_FOR_SKU = loadBundles();
     private static final Map<String, Integer> PRICES_PER_BUNDLE = loadPricesPerBundle();
 
     private static final Pattern ALLOWED_SKU = Pattern.compile("[ABCDE]+|^$");
@@ -35,6 +40,7 @@ public class CheckliteSolution {
             if(BUNDLE_FOR_SKU.containsKey(skuEntry.getKey()) &&
                     PRICES_PER_BUNDLE.containsKey(getBundlePriceKey(skuEntry))) {
                 int pricePerBundle = PRICES_PER_BUNDLE.get(getBundlePriceKey(skuEntry));
+                List<Integer> bundlesForSKU = BUNDLE_FOR_SKU.get(skuEntry.getKey());
                 while (numberOfItems >= BUNDLE_FOR_SKU.get(skuEntry.getKey())) {
                     result += pricePerBundle;
                     numberOfItems -= BUNDLE_FOR_SKU.get(skuEntry.getKey());
@@ -56,12 +62,11 @@ public class CheckliteSolution {
         prices.put('E', 40);
         return prices;
     }
-    private static Map<Character, Integer> loadBundles() {
-        Map<Character, Integer> bundles = new HashMap<>();
-        bundles.put('A', 3);
-        bundles.put('A', 5);
-        bundles.put('B', 2);
-        bundles.put('E', 3);
+    private static Map<Character, List<Integer>> loadBundles() {
+        Map<Character, List<Integer>> bundles = new HashMap<>();
+        bundles.put('A', newArrayList(5, 3));
+        bundles.put('B', newArrayList(2));
+        bundles.put('E', newArrayList(3));
         return bundles;
     }
 
@@ -82,5 +87,6 @@ public class CheckliteSolution {
         return BUNDLE_FOR_SKU.get(skuEntry.getKey()) + "" + skuEntry.getKey();
     }
 }
+
 
 
