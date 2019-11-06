@@ -42,31 +42,22 @@ public class CheckliteSolution {
                continue;
             }
             sort(bundlesForSKU, reverseOrder());
-            
-
-
-            if(BUNDLE_FOR_SKU.containsKey(skuEntry.getKey()) &&
-                    PRICES_PER_BUNDLE.containsKey(getBundlePriceKey(skuEntry))) {
-                int pricePerBundle = PRICES_PER_BUNDLE.get(getBundlePriceKey(skuEntry));
-                List<Integer> bundlesForSKU = BUNDLE_FOR_SKU.get(skuEntry.getKey());
-                if(!bundlesForSKU.isEmpty()) {
-                    sort(bundlesForSKU, reverseOrder());
-                    Iterator<Integer> bundleIterator = bundlesForSKU.iterator();
-                    while (bundleIterator.hasNext()) {
-                        int currentBundle = bundleIterator.next();
-                        if(currentBundle >= numberOfItems) {
-
-                        }
-                    }
+            for(int bundleQty : bundlesForSKU) {
+                Integer priceForBundle = PRICES_PER_BUNDLE.get(bundleQty + "" + skuEntry.getKey());
+                if(priceForBundle == null) {
+                    continue;
                 }
-                while (numberOfItems >= BUNDLE_FOR_SKU.get(skuEntry.getKey())) {
-                    result += pricePerBundle;
-                    numberOfItems -= BUNDLE_FOR_SKU.get(skuEntry.getKey());
+                while (numberOfItems >= bundleQty) {
+                    result += priceForBundle;
+                    numberOfItems -= bundleQty;
                 }
+                continue;
             }
             if(numberOfItems > 0) {
                 result += (numberOfItems * PRICES_PER_SKU.get(skuEntry.getKey()));
             }
+
+
         }
         return result;
     }
@@ -105,9 +96,3 @@ public class CheckliteSolution {
         return BUNDLE_FOR_SKU.get(skuEntry.getKey()) + "" + skuEntry.getKey();
     }
 }
-
-
-
-
-
-
