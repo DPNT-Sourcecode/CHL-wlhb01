@@ -12,6 +12,12 @@ public class CheckliteSolution {
     private static final Map<Character, Integer> PRICES_PER_SKU = loadPrices();
     private static final Map<Character, List<Integer>> BUNDLE_FOR_SKU = loadBundles();
     private static final Map<String, Integer> PRICES_PER_BUNDLE = loadPricesPerBundle();
+    private static final Map<String, String[]> PRIORITY_DISCOUNT = loadPriorityDiscounts();
+
+    private static Map<String, String[]> loadPriorityDiscounts() {
+        Map<String, String[]> priorityDiscounts = new HashMap<>();
+        priorityDiscounts.put("2")
+    }
 
     private static final Pattern ALLOWED_SKU = Pattern.compile("[ABCDE]+|^$");
 
@@ -31,6 +37,8 @@ public class CheckliteSolution {
                 occurrencesPerSKU.put(sku, 1);
             }
         }
+
+
 
         int result = 0;
         for (Map.Entry<Character, Integer> skuEntry : occurrencesPerSKU.entrySet()) {
@@ -91,5 +99,6 @@ public class CheckliteSolution {
         return BUNDLE_FOR_SKU.get(skuEntry.getKey()) + "" + skuEntry.getKey();
     }
 }
+
 
 
